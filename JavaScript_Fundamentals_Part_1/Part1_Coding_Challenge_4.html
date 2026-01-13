@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Part 1 Coding Challenge #4</title>
+  </head>
+  <body>
+    <div
+      class=""
+      style="display: flex; flex-direction: column; width: 200px; gap: 10px"
+    >
+      <label for="billvalue">Nhap gia tri bill</label>
+      <input type="text" id="billvalue" />
+      <button id="caculator" style="background-color: aqua">Caculator</button>
+      <label for="billvalue1">Gia tri cua Bill La</label>
+      <input type="text" disabled id="billvalue1" />
+      <label for="billvalue1">Tien tip ban nhan duoc la</label>
+      <input type="text" disabled id="tip" />
+      <label for="total">Tong so tien la</label>
+      <input type="text" disabled id="total" />
+    </div>
+    <script>
+      var button = document.getElementById("caculator");
+      button.onclick = () => {
+        var billvalue = Number(document.getElementById("billvalue").value);
+        var billvalue1 = (document.getElementById("billvalue1").value =
+          billvalue);
+        var tip = document.getElementById("tip");
+        var total = document.getElementById("total");
+        if (billvalue < 50) {
+          tip.value = 0;
+          total.value = billvalue;
+        } else
+          billvalue < 300
+            ? (tip.value = billvalue * 0.15) &&
+              (total.value = billvalue + billvalue * 0.15)
+            : (tip.value = billvalue * 0.2) &&
+              (total.value = billvalue + billvalue * 2);
+      };
+    </script>
+  </body>
+</html>

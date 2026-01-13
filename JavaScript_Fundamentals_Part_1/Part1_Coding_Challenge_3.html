@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Part 1 Coding Challenge #3</title>
+  </head>
+
+  <body>
+    <div
+      class=""
+      style="display: flex; gap: 10px; width: 600px; flex-direction: column"
+    >
+      <div class="" style="display: flex; flex-direction: row; gap: 20px">
+        <!-- Doi Dolphins -->
+        <div class="" style="display: flex; flex-direction: column">
+          <h2>Doi Cua Dolphins</h2>
+          <label for="dolphin1">Dolphins: Thanh vien 1</label>
+          <input id="dolphin1" type="text" placeholder="Diem so" />
+          <p></p>
+          <label for="dolphin2">Dolphins: Thanh vien 2</label>
+          <input id="dolphin2" type="text" placeholder="Diem so" />
+          <p></p>
+          <label for="dolphin3">Dolphins: Thanh vien 3</label>
+          <input id="dolphin3" type="text" placeholder="Diem so" />
+          <p></p>
+          <input
+            id="tb1"
+            type="text"
+            placeholder="Diem so trung binh"
+            disabled
+          />
+          <p></p>
+        </div>
+        <!-- Doi Koalas -->
+        <div class="" style="display: flex; flex-direction: column">
+          <h2>Doi Cua Koalas</h2>
+
+          <label for="koala1">Koalas: Thanh vien 1</label>
+          <input id="koala1" type="text" placeholder="Diem so" />
+          <p></p>
+          <label for="koala2">Koalas: Thanh vien 2</label>
+          <input id="koala2" type="text" placeholder="Diem so" />
+          <p></p>
+          <label for="koala3">Koalas: Thanh vien 3</label>
+          <input id="koala3" type="text" placeholder="Diem so" />
+          <p></p>
+          <input
+            id="tb2"
+            type="text"
+            placeholder="Diem so trung binh"
+            disabled
+          />
+          <p></p>
+        </div>
+      </div>
+      <div
+        class=""
+        style="
+          width: 60%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        "
+      >
+        <button id="sosanh">So Sanh</button>
+      </div>
+    </div>
+
+    <script>
+      var sosanh = document.getElementById("sosanh");
+
+      sosanh.onclick = () => {
+        var dolphin1 = Number(document.getElementById("dolphin1").value);
+        var dolphin2 = Number(document.getElementById("dolphin2").value);
+        var dolphin3 = Number(document.getElementById("dolphin3").value);
+        var kq1 = (dolphin1 + dolphin2 + dolphin3) / 3;
+
+        var diemtrungbinh1 = document.getElementById("tb1");
+        diemtrungbinh1.value = kq1;
+        console.log("Diem trung binh cua doi Dolphins: " + kq1);
+
+        var koala1 = Number(document.getElementById("koala1").value);
+        var koala2 = Number(document.getElementById("koala2").value);
+        var koala3 = Number(document.getElementById("koala3").value);
+        var kq2 = (koala1 + koala2 + koala3) / 3;
+        console.log("Diem trung binh cua doi Koalas: " + kq2);
+
+        var diemtrungbinh2 = document.getElementById("tb2");
+        diemtrungbinh2.value = kq2;
+        if (kq1 > kq2 && kq1 >= 100) {
+          alert("Doi Dolphins thang voi diem trung binh: " + kq1);
+          console.log("Doi Dolphins thang voi diem trung binh: " + kq1);
+        } else if (kq2 > kq1 && kq2 >= 100) {
+          alert("Doi Koalas thang voi diem trung binh: " + kq2);
+          console.log("Doi Koalas thang voi diem trung binh: " + kq2);
+        } else if (kq1 === kq2 && kq1 >= 100 && kq2 >= 100) {
+          alert("Hai doi hoa nhau voi diem trung binh: " + kq1);
+          console.log("Hai doi hoa nhau voi diem trung binh: " + kq1);
+        } else {
+          alert("Khong co doi nao thang");
+          console.log("Khong co doi nao thang");
+        }
+      };
+    </script>
+  </body>
+</html>

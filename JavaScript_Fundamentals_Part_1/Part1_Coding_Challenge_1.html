@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Part 1 Coding Challenge #1</title>
+</head>
+
+<body>
+    <div class="" style="display: flex; gap: 10px; flex-direction: column; width: 300px;">
+        <label for="mass">Nhap can nang cua ban</label>
+        <input id="mass" type="text" placeholder="Can nang (kg)">
+
+        <label for="height">Nhap chieu cao cua ban</label>
+        <input id="height" type="text" placeholder="Chieu cao (m)">
+        <button style="width: 30%;" id="tinh">Tinh</button>
+        <input style="width: 20%;" id="BMI" type="text" placeholder="BMI">
+
+    </div>
+
+    <script>
+        var tinh = document.getElementById("tinh");
+
+        tinh.onclick = () => {
+            var mass = Number(document.getElementById("mass").value);
+            var height = Number(document.getElementById("height").value);
+            var BMI = document.getElementById("BMI");
+            // Thiếu cân (<18.5), Bình thường (18.5-24.9), Thừa cân (25-29.9), Béo phì (≥30)
+            if (mass > 0 && height > 0) {
+                var answer = mass / (height * height);
+                BMI.value = answer.toFixed(2);
+                if (answer < 18.5)
+                    alert(answer + " Ban thieu can roi can an uong them nhe!")
+
+                else if (answer < 24.9)
+                    alert(answer + " Ban co co the hoan hao!")
+                else if (answer < 29.9)
+                    alert(answer + " Ban thua can roi can tap the duc nhe!")
+                else
+                    alert(answer + " Ban beo phi roi, can co che do an uong va tap the duc hop ly")
+
+            } else {
+                alert("Vui long nhap dung so!");
+            }
+        };
+    </script>
+
+</body>
+
+</html>

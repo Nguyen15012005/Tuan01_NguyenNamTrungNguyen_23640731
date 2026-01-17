@@ -2,105 +2,68 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Part 1 Coding Challenge #3</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="Nguyễn Nam Trung Nguyên" content="23640731" />
+    <title>Part 1 Coding Challenge 3</title>
   </head>
-
   <body>
-    <div
-      class=""
-      style="display: flex; gap: 10px; width: 600px; flex-direction: column"
-    >
-      <div class="" style="display: flex; flex-direction: row; gap: 20px">
-        <!-- Doi Dolphins -->
-        <div class="" style="display: flex; flex-direction: column">
-          <h2>Doi Cua Dolphins</h2>
-          <label for="dolphin1">Dolphins: Thanh vien 1</label>
-          <input id="dolphin1" type="text" placeholder="Diem so" />
-          <p></p>
-          <label for="dolphin2">Dolphins: Thanh vien 2</label>
-          <input id="dolphin2" type="text" placeholder="Diem so" />
-          <p></p>
-          <label for="dolphin3">Dolphins: Thanh vien 3</label>
-          <input id="dolphin3" type="text" placeholder="Diem so" />
-          <p></p>
-          <input
-            id="tb1"
-            type="text"
-            placeholder="Diem so trung binh"
-            disabled
-          />
-          <p></p>
-        </div>
-        <!-- Doi Koalas -->
-        <div class="" style="display: flex; flex-direction: column">
-          <h2>Doi Cua Koalas</h2>
+    <!-- 
+    Có hai đội thể dục dụng cụ, Cá heo và Gấu Koala. Họ thi đấu với nhau 3 lần. 
+    Đội có điểm trung bình cao nhất sẽ giành được cúp!
 
-          <label for="koala1">Koalas: Thanh vien 1</label>
-          <input id="koala1" type="text" placeholder="Diem so" />
-          <p></p>
-          <label for="koala2">Koalas: Thanh vien 2</label>
-          <input id="koala2" type="text" placeholder="Diem so" />
-          <p></p>
-          <label for="koala3">Koalas: Thanh vien 3</label>
-          <input id="koala3" type="text" placeholder="Diem so" />
-          <p></p>
-          <input
-            id="tb2"
-            type="text"
-            placeholder="Diem so trung binh"
-            disabled
-          />
-          <p></p>
-        </div>
-      </div>
-      <div
-        class=""
-        style="
-          width: 60%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        "
-      >
-        <button id="sosanh">So Sanh</button>
-      </div>
-    </div>
+    Nhiệm vụ của bạn:
+    1. Tính điểm trung bình của mỗi đội, sử dụng dữ liệu kiểm tra bên dưới.
 
+    2. So sánh điểm trung bình của các đội để xác định đội thắng cuộc và in kết quả ra màn hình. 
+    Đừng quên rằng có thể xảy ra trường hợp hòa, vì vậy hãy kiểm tra cả trường hợp đó (hòa nghĩa là hai đội có điểm trung bình bằng nhau).
+
+    3. Bonus 1: Bao gồm yêu cầu điểm tối thiểu là 100. 
+    Với quy tắc này, một Đội chỉ thắng nếu có điểm số cao hơn đội kia, đồng thời điểm số đó phải ít nhất là 100 điểm.
+    Gợi ý: Sử dụng toán tử logic để kiểm tra điểm số tối thiểu, cũng như nhiều khối else-if.
+
+    4. Bonus 2: Điểm số tối thiểu cũng áp dụng cho trường hợp hòa! Vì vậy, trận hòa chỉ xảy ra khi cả hai đội có cùng điểm số và mỗi đội có điểm số lớn hơn hoặc bằng 100 điểm. 
+    Nếu không, không đội nào giành được cúp
+
+    § Data 1: Cá heo đạt điểm 96, 108 và 89. Gấu Koala đạt điểm 88, 91 và 110.
+    § Data Bonus 1: Cá heo đạt điểm 97, 112 và 101. Gấu Koala đạt điểm 109, 95 và 123.
+    § Data Bonus 2: Cá heo đạt điểm 97, 112 và 101. Gấu Koala đạt điểm 109, 95 và 106.
+    -->
     <script>
-      var sosanh = document.getElementById("sosanh");
+      const calcAverage = (scores) =>
+        scores.reduce((sum, s) => sum + s, 0) / scores.length;
 
-      sosanh.onclick = () => {
-        var dolphin1 = Number(document.getElementById("dolphin1").value);
-        var dolphin2 = Number(document.getElementById("dolphin2").value);
-        var dolphin3 = Number(document.getElementById("dolphin3").value);
-        var kq1 = (dolphin1 + dolphin2 + dolphin3) / 3;
+      const checkWinner = (dolphinsScores, koalasScores, label) => {
+        console.log(`------${label}------`);
+        console.log(`Dolphins: ${dolphinsScores}`);
+        console.log(`Koalas: ${koalasScores}`);
 
-        var diemtrungbinh1 = document.getElementById("tb1");
-        diemtrungbinh1.value = kq1;
-        console.log("Diem trung binh cua doi Dolphins: " + kq1);
+        const avgD = calcAverage(dolphinsScores);
+        const avgK = calcAverage(koalasScores);
 
-        var koala1 = Number(document.getElementById("koala1").value);
-        var koala2 = Number(document.getElementById("koala2").value);
-        var koala3 = Number(document.getElementById("koala3").value);
-        var kq2 = (koala1 + koala2 + koala3) / 3;
-        console.log("Diem trung binh cua doi Koalas: " + kq2);
+        console.log(`Trung bình Dolphins: ${avgD.toFixed(2)} điểm`);
+        console.log(`Trung bình Koalas: ${avgK.toFixed(2)} điểm`);
+        console.log("Kết quả........");
 
-        var diemtrungbinh2 = document.getElementById("tb2");
-        diemtrungbinh2.value = kq2;
-        if (kq1 > kq2 && kq1 >= 100) {
-          alert("Doi Dolphins thang voi diem trung binh: " + kq1);
-          console.log("Doi Dolphins thang voi diem trung binh: " + kq1);
-        } else if (kq2 > kq1 && kq2 >= 100) {
-          alert("Doi Koalas thang voi diem trung binh: " + kq2);
-          console.log("Doi Koalas thang voi diem trung binh: " + kq2);
-        } else if (kq1 === kq2 && kq1 >= 100 && kq2 >= 100) {
-          alert("Hai doi hoa nhau voi diem trung binh: " + kq1);
-          console.log("Hai doi hoa nhau voi diem trung binh: " + kq1);
+        const minScore = 100;
+
+        if (avgD >= minScore && avgD > avgK) {
+          console.log(`Dolphins win (${avgD.toFixed(2)} > ${avgK.toFixed(2)})`);
+        } else if (avgK >= minScore && avgK > avgD) {
+          console.log(`Koalas win (${avgK.toFixed(2)} > ${avgD.toFixed(2)})`);
+        } else if (avgD >= minScore && avgK >= minScore && avgD === avgK) {
+          console.log(
+            `Hai đội hòa (${avgD.toFixed(2)} điểm) và đều đạt >= 100!`
+          );
         } else {
-          alert("Khong co doi nao thang");
-          console.log("Khong co doi nao thang");
+          console.log("Không đội nào giành chiến thắng :((");
         }
+
+        console.log("---------------------------");
       };
+
+      checkWinner([96, 108, 89], [88, 91, 110], "Test Data 1");
+      checkWinner([97, 112, 101], [109, 95, 123], "Data Bonus 1");
+      checkWinner([97, 112, 101], [109, 95, 106], "Data Bonus 2");
     </script>
   </body>
 </html>

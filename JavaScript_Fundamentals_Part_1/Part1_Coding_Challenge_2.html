@@ -1,73 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <title>Part 1 Coding Challenge #2</title>
-</head>
-
-<body>
-    <div class="" style="display: flex; gap: 10px; width: 600px; flex-direction: column;">
-        <div class="" style="display: flex; flex-direction: row;">
-            <div class="" style="display: flex; flex-direction: column;">
-                <label for="mass1">Nhap can nang cua Mark's</label>
-                <input id="mass1" type="text" placeholder="Can nang (kg)">
-                <p></p>
-                <label for="height1">Nhap chieu cao cua Mark's</label>
-                <input id="height1" type="text" placeholder="Chieu cao (m)">
-                <p></p>
-                <input id="BMI1" type="text" placeholder="BMI" disabled>
-            </div>
-
-            <div class="" style="display: flex; flex-direction: column;">
-                <label for="mass2">Nhap can nang cua John</label>
-                <input id="mass2" type="text" placeholder="Can nang (kg)">
-                <p></p>
-                <label for="height2">Nhap chieu cao cua John</label>
-                <input id="height2" type="text" placeholder="Chieu cao (m)">
-                <p></p>
-                <input id="BMI2" type="text" placeholder="BMI" disabled>
-            </div>
-        </div>
-        <div class="" style="width: 100%;"><button id="sosanh">So Sanh</button></div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="Nguyễn Nam Trung Nguyên" content="23640731" />
+    <title>Part 1 Coding Challenge 2</title>
+  </head>
+  <body>
+    <!-- 
+    ####Code Challenges 01####
+    Hãy sử dụng ví dụ về BMI từ Thử thách số 1 và đoạn mã bạn đã viết, rồi cải tiến nó.
+    Nhiệm vụ của bạn:
+    1. In ra màn hình console một thông báo rõ ràng cho biết ai có chỉ số BMI cao hơn. 
+    Thông báo có thể là "Chỉ số BMI của Mark cao hơn chỉ số BMI của John!" 
+    hoặc "Chỉ số BMI của John cao hơn chỉ số BMI của Mark!".
+    2. Sử dụng chuỗi ký tự mẫu để bao gồm các giá trị BMI trong kết quả đầu ra. 
+    Ví dụ: "Mark'sBMI (28,3) cao hơn BMI của John (23,9)!
+    Gợi ý: Sử dụng câu lệnh if/else
 
 
-    </div>
-
+    -->
     <script>
-        var sosanh = document.getElementById("sosanh");
+      const calcBMI = (mass, height) => mass / (height * height);
 
-        sosanh.onclick = () => {
-            var mass1 = Number(document.getElementById("mass1").value);
-            var height1 = Number(document.getElementById("height1").value);
-            var BMI = document.getElementById("BMI1");
+      const compareBMI = (
+        markMass,
+        markHeight,
+        johnMass,
+        johnHeight,
+        label
+      ) => {
+        console.log(`-----${label}-----`);
 
-            var mass2 = Number(document.getElementById("mass2").value);
-            var height2 = Number(document.getElementById("height2").value);
-            var BMI2 = document.getElementById("BMI2");
+        const markBMI = calcBMI(markMass, markHeight);
+        const johnBMI = calcBMI(johnMass, johnHeight);
 
-            if (mass1 > 0 && height1 > 0 && mass2 > 0 && height2 > 0) {
-                var answer1 = mass1 / (height1 * height1);
-                BMI1.value = answer1.toFixed(2);
-                console.log(answer1);
+        console.log(`Chỉ số BMI của Mark: ${markBMI.toFixed(2)}`);
+        console.log(`Chỉ số BMI của John: ${johnBMI.toFixed(2)}`);
 
-                var answer2 = mass2 / (height2 * height2);
-                BMI2.value = answer2.toFixed(2);
-                console.log(answer1);
-                if (answer1 < answer2) {
-                    alert("Mark's BMI is higher than John's!")
-                    console.log("Mark's BMI (" + answer1 +") is higher than John's! (" + answer2 +")");
-                }
-                else {
-                    alert("John's BMI is higher than Mark's!")
-                    console.log("John's BMI (" + answer1 +") is higher than Mark's!(" + answer2 +")");
-                }
-            } else {
-                alert("Vui long nhap dung so!");
-            }
-        };
+        if (markBMI > johnBMI) {
+          console.log("Chỉ số BMI của Mark cao hơn chỉ số BMI của John!");
+          console.log(
+            `Mark's BMI (${markBMI.toFixed(
+              2
+            )}) cao hơn John's BMI (${johnBMI.toFixed(2)})`
+          );
+        } else {
+          console.log("Chỉ số BMI của John cao hơn chỉ số BMI của Mark!");
+          console.log(
+            `John's BMI (${johnBMI.toFixed(
+              2
+            )}) cao hơn Mark's BMI (${markBMI.toFixed(2)})`
+          );
+        }
+      };
+
+      compareBMI(78, 1.69, 92, 1.95, "Test dữ liệu 1");
+      compareBMI(95, 1.88, 85, 1.76, "Test dữ liệu 2");
     </script>
-
-</body>
-
+  </body>
 </html>
